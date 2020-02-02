@@ -1,0 +1,60 @@
+﻿<Window x:Class="WeatherApp.Views.WeatherView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherApp.Views"
+        xmlns:resx="clr-namespace:WeatherApp.Properties"
+        xmlns:controls="clr-namespace:WeatherApp.Views.Controls"
+        mc:Ignorable="d"
+        Title="WeatherView" Height="450" Width="850">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="CadetBlue"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="Chartreuse"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="CadetBlue"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="Chartreuse"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="AliceBlue">
+
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="620" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400"/>
+
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0">
+            --><!--<TextBlock Text="{Binding CurrentWeatherData.Location,Mode=OneWay}"/>--><!--
+            <StackPanel>
+                <controls:Bar SetText="{Binding Sample,Mode=OneWay}"  MaxValue="{Binding Path=Temperature.TempMax}" Value="100" Color="{Binding Temperature.ColorBrush}" Margin="5" VerticalAlignment="Bottom"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{x:Static resx:Resources.CurrentWeather}"/>
+                    <TextBlock Text="{Binding CurrentWeatherData.Temperature.Temp,Mode=OneWay, StringFormat={}{0} °C}" FontSize="25" Foreground="{Binding CurrentWeatherData.Temperature.ColorBrush}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Current weather: "/>
+                    <TextBlock Text="{Binding CurrentWeatherData.Temperature.TempMin,Mode=OneWay, StringFormat={}{0} °C}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Current weather: "/>
+                    --><!--<TextBlock Text="{Binding CurrentWeatherData.Temperature.TempMax,Mode=OneWay, StringFormat={}{0} °C}"/>--><!--
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Current weather: "/>
+                    <TextBlock Text="{Binding CurrentWeatherData.Temperature.Humidity,Mode=OneWay, StringFormat={}{0} %}"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        --><!--<controls:ForecastUC Grid.Column="1">
+
+        </controls:ForecastUC>-->
+        <controls:Bar SetText="{Binding Sample,Mode=OneWay}"  />
+    </Grid>
+</Window>

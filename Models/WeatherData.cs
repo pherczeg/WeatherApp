@@ -38,6 +38,15 @@ namespace WeatherApp.Models
             }
         }
 
+        public string ImageUrl
+        {
+            get 
+            {
+                var iconID = weather[0].IconID;
+                return $"http://openweathermap.org/img/wn/{iconID}@2x.png"; 
+            }
+        }
+
         public override string ToString()
         {
             return Temperature.Temp.ToString();

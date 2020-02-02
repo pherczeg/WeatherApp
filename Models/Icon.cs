@@ -19,7 +19,5 @@ namespace WeatherApp.Models
                 NotifyPropertyChanged("Temperature");
             }
         }
-
-
     }
 }

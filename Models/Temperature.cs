@@ -76,7 +76,7 @@ namespace WeatherApp.Models
             }
         }
 
-        public LinearGradientBrush ColorBrush
+        public SolidColorBrush ColorBrush
         {
             get 
             {
@@ -97,7 +97,7 @@ namespace WeatherApp.Models
                     color = Colors.LightBlue;
                 else if (Temp >= 0)
                     color = Colors.Blue;
-                return new LinearGradientBrush(color, Colors.Black,90);
+                return new SolidColorBrush(color);
             }
         }
 

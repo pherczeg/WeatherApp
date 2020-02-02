@@ -7,15 +7,19 @@
              mc:Ignorable="d" 
              MinWidth="20" Width="Auto"
              >
-    
+
     <Grid>
-        <TextBlock x:Name="textblock" Text="{Binding SetText}"/>
-        <!--<Grid Background="{Binding Background, ElementName=border}" Opacity="0.3"/>
-        <Border x:Name="border" Background="{Binding Color}" VerticalAlignment="Bottom" Height="{Binding BarHeight}"/>
-        <TextBlock VerticalAlignment="Center" Margin="3" HorizontalAlignment="Center" Text="{Binding Text}" FontSize="20">
-            <TextBlock.Effect>
-                <DropShadowEffect BlurRadius="1" ShadowDepth="0" Color="White"/>
-            </TextBlock.Effect>
-        </TextBlock>-->
+        <Border x:Name="border" Background="{Binding Color}" VerticalAlignment="Bottom" Height="{Binding Value}" MinWidth="50">
+            <StackPanel>
+                <Image x:Name="img" Width="40" Height="40" Source="{Binding ImageUrl}"/>
+                <TextBlock x:Name="textblock" VerticalAlignment="Center" Margin="2" HorizontalAlignment="Center" Text="{Binding SetText}" FontSize="20" >
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="1" ShadowDepth="0" Color="White"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+
     </Grid>
 </UserControl>

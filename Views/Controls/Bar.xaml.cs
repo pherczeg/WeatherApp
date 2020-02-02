@@ -23,17 +23,39 @@ namespace WeatherApp.Views.Controls
     public partial class Bar : UserControl
     {
 
+        public static readonly DependencyProperty ImageUrlProperty =
+         DependencyProperty.Register("ImageUrl", typeof(string), typeof(Bar), new
+            UIPropertyMetadata("n/a", new PropertyChangedCallback(OnImageUrlChanged)));
+
+        public string ImageUrl
+        {
+            get { return (string)GetValue(ImageUrlProperty); }
+            set { SetValue(ImageUrlProperty, value); }
+        }
+
+        private static void OnImageUrlChanged(DependencyObject d,
+          DependencyPropertyChangedEventArgs e)
+        {
+            Bar bar = d as Bar;
+            bar.OnImageUrlChanged(e);
+        }
+
+        private void OnImageUrlChanged(DependencyPropertyChangedEventArgs e)
+        {
+            //img.Source.SetValue(
+        }
+
+
+
         public static readonly DependencyProperty SetTextProperty =
          DependencyProperty.Register("SetText", typeof(string), typeof(Bar), new
-            UIPropertyMetadata("sd", new PropertyChangedCallback(OnSetTextChanged)));
+            UIPropertyMetadata("n/a", new PropertyChangedCallback(OnSetTextChanged)));
 
         public string SetText
         {
             get { return (string)GetValue(SetTextProperty); }
             set { SetValue(SetTextProperty, value); }
         }
-
-
 
         private static void OnSetTextChanged(DependencyObject d,
           DependencyPropertyChangedEventArgs e)
@@ -46,78 +68,71 @@ namespace WeatherApp.Views.Controls
         {
             textblock.Text = e.NewValue.ToString();
         }
-        //public double Value
-        //{
-        //    get
-        //    {
-        //        return (double)this.GetValue(ValueProperty);
-        //    }
-        //    set
-        //    {
-        //        this.SetValue(ValueProperty, value);
-        //        UpdateBarHeight();
-        //        NotifyPropertyChanged("Value");
-        //    }
-        //}
-        //public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
-        //  "Value", typeof(double), typeof(Bar), new PropertyMetadata(0.0));
 
 
-        //public Brush Color
-        //{
-        //    get
-        //    {
-        //        return (Brush)this.GetValue(ColorProperty);
-        //    }
-        //    set
-        //    {
-        //        this.SetValue(ColorProperty, value);
-        //        NotifyPropertyChanged("Color");
-        //    }
-        //}
-        //public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(
-        //  "Color", typeof(SolidColorBrush), typeof(Bar), new PropertyMetadata(default(Brush)));
-
-        //public double MaxValue
-        //{
-        //    get
-        //    {
-        //        return (double)this.GetValue(ColorProperty);
-        //    }
-        //    set
-        //    {
-        //        this.SetValue(ColorProperty, value);
-        //        UpdateBarHeight();
-        //        NotifyPropertyChanged("MaxValue");
-        //    }
-        //}
-        //public static readonly DependencyProperty MaxValueProperty = DependencyProperty.Register(
-        //  "MaxValue", typeof(double), typeof(Bar), new PropertyMetadata(default(double)));
+        public double Value
+        {
+            get
+            {
+                return (double)this.GetValue(ValueProperty);
+            }
+            set
+            {
+                this.SetValue(ValueProperty, value);
+                NotifyPropertyChanged("Value");
+            }
+        }
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
+          "Value", typeof(double), typeof(Bar), new UIPropertyMetadata(0.0, new PropertyChangedCallback(OnValueChanged)));
 
 
-        //private double barHeight;
-        //public double BarHeight
-        //{
-        //    get { return barHeight; }
-        //    private set { barHeight = value; NotifyPropertyChanged("BarHeight"); }
-        //}
+        private static void OnValueChanged(DependencyObject d,
+          DependencyPropertyChangedEventArgs e)
+        {
+            Bar bar = d as Bar;
+            bar.OnValueChanged(e);
+        }
 
-        //private void UpdateBarHeight()
-        //{
-        //    if (MaxValue > 0)
-        //    {
-        //        var percent = (Value * 100) / MaxValue;
-        //        BarHeight = (percent * this.ActualHeight) / 100;
-        //    }
-        //}
+        private void OnValueChanged(DependencyPropertyChangedEventArgs e)
+        {
+            var newValue = (double)e.NewValue;
+            border.Height = 250 * (newValue/45) +100;
+        }
 
+        public Brush Color
+        {
+            get
+            {
+                return (Brush)this.GetValue(ColorProperty);
+            }
+            set
+            {
+                this.SetValue(ColorProperty, value);
+                NotifyPropertyChanged("Color");
+            }
+        }
+        public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(
+          "Color", typeof(SolidColorBrush), typeof(Bar), new UIPropertyMetadata(default(Brush),new PropertyChangedCallback(OnColorChanged)));
 
-        //public Bar()
-        //{
-        //    InitializeComponent();
-        //    this.DataContext = this;
-        //    Color = Brushes.Black;
-        //}
+        private static void OnColorChanged(DependencyObject d,
+          DependencyPropertyChangedEventArgs e)
+        {
+            Bar bar = d as Bar;
+            bar.OnColorChanged(e);
+        }
+
+        private void OnColorChanged(DependencyPropertyChangedEventArgs e)
+        {
+            var newValue = (Brush)e.NewValue;
+            border.Background = newValue;
+        }
+
+        public Bar()
+        {
+            InitializeComponent();
+            //this.DataContext = this;
+            //Color = Brushes.Black;
+        }
 
         //private void UserControl_Loaded(object sender, RoutedEventArgs e)
         //{
@@ -129,12 +144,12 @@ namespace WeatherApp.Views.Controls
         //    UpdateBarHeight();
         //}
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //private void NotifyPropertyChanged(string info)
-        //{
-        //    //if (PropertyChanged != null)
-        //    //    PropertyChanged(this, new PropertyChangedEventArgs(info));
-        //}
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string info)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
+        }
     }
 }
 

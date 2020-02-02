@@ -20,26 +20,26 @@ namespace WeatherApp.ViewModels
         {
             get { return "asdfowe"; }
         }
-        //private CurrentWeatherData currentWeatherData;
+        private CurrentWeatherData currentWeatherData;
 
-        //public CurrentWeatherData CurrentWeatherData
-        //{
-        //    get { return currentWeatherData; }
-        //    set { currentWeatherData = value; }
-        //}
+        public CurrentWeatherData CurrentWeatherData
+        {
+            get { return currentWeatherData; }
+            set { currentWeatherData = value; }
+        }
 
-        //private ForecastWeatherData forecastWeatherData;
+        private ForecastWeatherData forecastWeatherData;
 
-        //public ForecastWeatherData ForecastWeatherData
-        //{
-        //    get { return forecastWeatherData; }
-        //    set { forecastWeatherData = value; }
-        //}
+        public ForecastWeatherData ForecastWeatherData
+        {
+            get { return forecastWeatherData; }
+            set { forecastWeatherData = value; }
+        }
 
         public WeatherViewModel()
         {
-            //CurrentWeatherData = OpenWeatherMapService.GetDataFromAPI<CurrentWeatherData>("weather");
-            //ForecastWeatherData = OpenWeatherMapService.GetDataFromAPI<ForecastWeatherData>("forecast");
+            CurrentWeatherData = OpenWeatherMapService.GetDataFromAPI<CurrentWeatherData>("weather");
+            ForecastWeatherData = OpenWeatherMapService.GetDataFromAPI<ForecastWeatherData>("forecast");
         }
     }
 

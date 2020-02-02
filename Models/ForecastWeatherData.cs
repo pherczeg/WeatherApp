@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Models
 {
-    public class ForecastWeatherData
+    public class ForecastWeatherData : WeatherData
     {
         private IEnumerable<WeatherData> list;
         [JsonProperty("list")]

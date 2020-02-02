@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WeatherApp.Properties;
 
 namespace WeatherApp.ViewModels.Services
@@ -15,16 +16,24 @@ namespace WeatherApp.ViewModels.Services
     {
         private static WebClient webClient;
         public static T GetDataFromAPI<T>(string name)
-        {           
+        {
             var cityId = Resources.CityId;
             var apikey = Resources.ApiKey;
             T deserializedObject;
-            using (webClient = new WebClient())
+            try
             {
-                webClient.BaseAddress = Resources.BaseURL;
-                var query = $"{name}?q={cityId}&APPID={apikey}&units=metric";
-                var json = webClient.DownloadString(query);
-                deserializedObject = JsonConvert.DeserializeObject<T>(json);
+                using (webClient = new WebClient())
+                {
+                    webClient.BaseAddress = Resources.BaseURL;
+                    var query = $"{name}?q={cityId}&APPID={apikey}&units=metric";
+                    var json = webClient.DownloadString(query);
+                    deserializedObject = JsonConvert.DeserializeObject<T>(json);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
             }
             return deserializedObject;
         }

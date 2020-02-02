@@ -95,5 +95,32 @@ namespace WeatherApp.Properties {
                 return ResourceManager.GetString("CurrentWeather", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Humidity:.
+        /// </summary>
+        public static string Humidity {
+            get {
+                return ResourceManager.GetString("Humidity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max temperature:.
+        /// </summary>
+        public static string MaxTemp {
+            get {
+                return ResourceManager.GetString("MaxTemp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min temperature:.
+        /// </summary>
+        public static string MinTemp {
+            get {
+                return ResourceManager.GetString("MinTemp", resourceCulture);
+            }
+        }
     }
 }

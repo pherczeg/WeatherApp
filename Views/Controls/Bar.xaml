@@ -13,9 +13,6 @@
             <StackPanel>
                 <Image x:Name="img" Width="40" Height="40" Source="{Binding ImageUrl}"/>
                 <TextBlock x:Name="textblock" VerticalAlignment="Center" Margin="2" HorizontalAlignment="Center" Text="{Binding SetText}" FontSize="20" >
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="1" ShadowDepth="0" Color="White"/>
-                    </TextBlock.Effect>
                 </TextBlock>
             </StackPanel>
         </Border>

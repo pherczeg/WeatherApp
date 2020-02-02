@@ -129,4 +129,13 @@
   <data name="CurrentWeather" xml:space="preserve">
     <value>Current weather: </value>
   </data>
+  <data name="Humidity" xml:space="preserve">
+    <value>Humidity:</value>
+  </data>
+  <data name="MaxTemp" xml:space="preserve">
+    <value>Max temperature:</value>
+  </data>
+  <data name="MinTemp" xml:space="preserve">
+    <value>Min temperature:</value>
+  </data>
 </root>

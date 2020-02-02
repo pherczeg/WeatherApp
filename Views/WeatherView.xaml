@@ -8,81 +8,70 @@
         xmlns:controls="clr-namespace:WeatherApp.Views.Controls"
         mc:Ignorable="d"
         Title="WeatherView" Height="450" Width="950">
-  <!--<Window.Resources>
-    <Style TargetType="TextBlock">
-      <Setter Property="VerticalAlignment" Value="Center"/>
-      <Setter Property="FontSize" Value="20"/>
-      <Setter Property="Foreground" Value="Black"/>
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="Black"/>
 
-      <Setter Property="Effect">
-        <Setter.Value>
-          <DropShadowEffect BlurRadius="2"
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="2"
                             Color="White"
                             RenderingBias="Quality"
                             ShadowDepth="0"/>
-        </Setter.Value>
-      </Setter>
-    </Style>
-    <Style TargetType="Label">
-      <Setter Property="Effect">
-        <Setter.Value>
-          <DropShadowEffect BlurRadius="2"
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="2"
                             Color="White"
                             RenderingBias="Quality"
                             ShadowDepth="0"/>
-        </Setter.Value>
-      </Setter>
-      <Setter Property="FontSize" Value="20"/>
-      <Setter Property="Foreground" Value="Black"/>
-    </Style>
-  </Window.Resources>-->
-  <Grid Background="AliceBlue">
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="AliceBlue">
 
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="250" />
-      <ColumnDefinition Width="620" />
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="400"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="620" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400"/>
 
-    </Grid.RowDefinitions>
-    <StackPanel Grid.Column="0">
-      <StackPanel Orientation="Vertical">
-        <Grid >
-          <Image Source="{Binding CurrentWeatherData.ImageUrl}" Width="100" Height="100" HorizontalAlignment="Left"/>
-        </Grid>
-        <StackPanel Orientation="Horizontal">
-          <Label Content="{x:Static resx:Resources.CurrentWeather}"/>
-          <TextBlock Text="{Binding CurrentWeatherData.Temperature.Temp,Mode=OneWay, StringFormat={}{0} °C}"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0">
+            <StackPanel Orientation="Vertical">
+                <Grid >
+                    <Image Source="{Binding CurrentWeatherData.ImageUrl}" Width="100" Height="100" HorizontalAlignment="Left"/>
+                </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{x:Static resx:Resources.CurrentWeather}"/>
+                    <TextBlock Text="{Binding CurrentWeatherData.Temperature.Temp,Mode=OneWay, StringFormat={}{0} °C}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{x:Static resx:Resources.MinTemp}"/>
+                    <TextBlock Text="{Binding CurrentWeatherData.Temperature.TempMin,Mode=OneWay, StringFormat={}{0} °C}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{x:Static resx:Resources.MaxTemp}"/>
+                    <TextBlock Text="{Binding CurrentWeatherData.Temperature.TempMax,Mode=OneWay, StringFormat={}{0} °C}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{x:Static resx:Resources.Humidity}"/>
+                    <TextBlock Text="{Binding CurrentWeatherData.Temperature.Humidity,Mode=OneWay, StringFormat={}{0} %}"/>
+                </StackPanel>
+            </StackPanel>
+            <Button Content="Refresh" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding RefreshCommand}"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-          <Label Content="{x:Static resx:Resources.MinTemp}"/>
-          <TextBlock Text="{Binding CurrentWeatherData.Temperature.TempMin,Mode=OneWay, StringFormat={}{0} °C}"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-          <Label Content="{x:Static resx:Resources.MaxTemp}"/>
-          <TextBlock Text="{Binding CurrentWeatherData.Temperature.TempMax,Mode=OneWay, StringFormat={}{0} °C}"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-          <Label Content="{x:Static resx:Resources.Humidity}"/>
-          <TextBlock Text="{Binding CurrentWeatherData.Temperature.Humidity,Mode=OneWay, StringFormat={}{0} %}"/>
-        </StackPanel>
-      </StackPanel>
-      <TextBlock Text="Refresh" FontSize="30" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center">
-        <TextBlock.Style>
-          <Style TargetType="TextBlock">
-            <Setter Property= "Foreground" Value="Blue"/>
-            <Style.Triggers>
-              <Trigger Property ="IsMouseOver" Value="True">
-                <Setter Property= "Foreground" Value="Red"/>
-              </Trigger>
-            </Style.Triggers>
-          </Style>
-        </TextBlock.Style>
-      </TextBlock>
-    </StackPanel>
-    <controls:ForecastUC Grid.Column="1">
+        <controls:ForecastUC Grid.Column="1">
 
-    </controls:ForecastUC>
-  </Grid>
+        </controls:ForecastUC>
+    </Grid>
 </Window>

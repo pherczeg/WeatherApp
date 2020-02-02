@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using WeatherApp.Models;
 using WeatherApp.Properties;
 using WeatherApp.ViewModels.Services;
@@ -15,11 +17,20 @@ namespace WeatherApp.ViewModels
 {
     public class WeatherViewModel : Screen
     {
+        private ICommand refreshCommand;
 
-        public string Sample
+        public ICommand RefreshCommand
         {
-            get { return "asdfowe"; }
+            get
+            {
+                if (refreshCommand == null)
+                {
+                    refreshCommand = new RelayCommand(() => { this.GetData(); }, false);
+                }
+                return refreshCommand;
+            }
         }
+
         private CurrentWeatherData currentWeatherData;
 
         public CurrentWeatherData CurrentWeatherData
@@ -37,6 +48,11 @@ namespace WeatherApp.ViewModels
         }
 
         public WeatherViewModel()
+        {
+            GetData();
+        }
+
+        private void GetData()
         {
             CurrentWeatherData = OpenWeatherMapService.GetDataFromAPI<CurrentWeatherData>("weather");
             ForecastWeatherData = OpenWeatherMapService.GetDataFromAPI<ForecastWeatherData>("forecast");

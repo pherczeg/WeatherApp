@@ -5,21 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WeatherApp.Views.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="430" d:DesignWidth="660">
-    <UserControl.Resources>
-        <local:DoubleToIntConverter x:Key="DoubleToIntConverter" />
-    </UserControl.Resources>
+             d:DesignHeight="600" d:DesignWidth="690">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border BorderBrush="Gray" BorderThickness="0 0 0 1" Height="auto">
-            <TextBlock Text="{Binding CurrentWeatherData.Location,Mode=OneWay}" VerticalAlignment="Center" Margin="0" 
+
+        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Gray" BorderThickness="0 0 0 1" Height="auto">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding CurrentWeatherData.Location,Mode=OneWay}" VerticalAlignment="Center" Margin="0" 
                        FontSize="24"/>
+                <TextBlock Text="Forecast for the next 5 days" Margin="1" VerticalAlignment="Center" Padding="50,0,0,0"/>
+            </StackPanel>
         </Border>
-        <Border Grid.Row="1" Width="600" Height="350" VerticalAlignment="Top" 
+        <Border Grid.Row="1" Grid.Column="1" Width="600" Height="550" VerticalAlignment="Top" 
                 HorizontalAlignment="Left" Margin="20" Background="White"
                 BorderBrush="Gray" CornerRadius="12">
             <Grid>
@@ -38,10 +43,11 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <!--<local:Bar Background="#FF4455AA" MaxValue="400" Color="#FF3352" Value="130" Margin="5"/>
-                    <local:Bar MaxValue="100" Color="#FF4611BB" Value="18" Margin="5"/>-->
                 </StackPanel>
             </Grid>
         </Border>
+        <Canvas Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="0 --" FontSize="20" Canvas.Left="10" Canvas.Top="350"/>
+        </Canvas>
     </Grid>
 </UserControl>

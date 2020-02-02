@@ -7,7 +7,8 @@
         xmlns:resx="clr-namespace:WeatherApp.Properties"
         xmlns:controls="clr-namespace:WeatherApp.Views.Controls"
         mc:Ignorable="d"
-        Title="WeatherView" Height="450" Width="950">
+        Title="WeatherView" Height="650" Width="980"
+        ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -43,7 +44,7 @@
             <ColumnDefinition Width="620" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="400"/>
+            <RowDefinition Height="550"/>
 
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0">
@@ -70,8 +71,6 @@
             </StackPanel>
             <Button Content="Refresh" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding RefreshCommand}"/>
         </StackPanel>
-        <controls:ForecastUC Grid.Column="1">
-
-        </controls:ForecastUC>
+        <controls:ForecastUC Grid.Column="1"/>
     </Grid>
 </Window>

@@ -1,16 +1,7 @@
 ﻿using Caliburn.Micro;
 using GalaSoft.MvvmLight.Command;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using WeatherApp.Models;
-using WeatherApp.Properties;
 using WeatherApp.ViewModels.Services;
 
 namespace WeatherApp.ViewModels

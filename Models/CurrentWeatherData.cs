@@ -6,9 +6,5 @@ namespace WeatherApp.Models
     {
         [JsonProperty("name")]
         public string Location { get; set; }
-        
-        [JsonProperty("coord")]
-        public Coordinate Coordinate { get; set; }               
-
     }
 }

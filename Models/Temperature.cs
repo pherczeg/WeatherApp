@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using WeatherApp.Models.Helper;
@@ -12,7 +7,7 @@ namespace WeatherApp.Models
 {
     public class Temperature : NotifyProperty
     {
-        
+
 
         private double temp;
         [JsonProperty("temp")]
@@ -78,7 +73,7 @@ namespace WeatherApp.Models
 
         public SolidColorBrush ColorBrush
         {
-            get 
+            get
             {
                 Color color = Colors.DarkBlue;
                 if (Temp >= 40)

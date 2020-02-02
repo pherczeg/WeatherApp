@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WeatherApp.Models.Helper;
 
 namespace WeatherApp.Views.Controls
 {
@@ -96,7 +85,18 @@ namespace WeatherApp.Views.Controls
         private void OnValueChanged(DependencyPropertyChangedEventArgs e)
         {
             var newValue = (double)e.NewValue;
-            border.Height = 250 * (newValue/45) +100;
+            if (newValue == 0)
+            {
+                border.Height = 200;
+            }
+            if (newValue<0)
+            {
+                border.Height = 100 * (1 - (Math.Abs(newValue)/25))+100;
+            }
+            else
+            {
+                border.Height = 350 * (newValue / 45) + 200;
+            }
         }
 
         public Brush Color
@@ -112,7 +112,7 @@ namespace WeatherApp.Views.Controls
             }
         }
         public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(
-          "Color", typeof(SolidColorBrush), typeof(Bar), new UIPropertyMetadata(default(Brush),new PropertyChangedCallback(OnColorChanged)));
+          "Color", typeof(SolidColorBrush), typeof(Bar), new UIPropertyMetadata(default(Brush), new PropertyChangedCallback(OnColorChanged)));
 
         private static void OnColorChanged(DependencyObject d,
           DependencyPropertyChangedEventArgs e)

@@ -3,7 +3,6 @@
 
 namespace WeatherApp.Models
 {
-    using System.ComponentModel;
     using WeatherApp.Models.Helper;
 
     public class WeatherData : NotifyProperty
@@ -11,16 +10,16 @@ namespace WeatherApp.Models
         private Icon[] weather;
         [JsonProperty("weather")]
         public Icon[] Weather
-        { 
-            get 
-            { 
-                return weather; 
-            } 
-            set 
-            { 
-                weather = value; 
+        {
+            get
+            {
+                return weather;
+            }
+            set
+            {
+                weather = value;
                 NotifyPropertyChanged("Weather");
-            } 
+            }
         }
 
         private Temperature temperature;
@@ -40,10 +39,10 @@ namespace WeatherApp.Models
 
         public string ImageUrl
         {
-            get 
+            get
             {
                 var iconID = weather[0].IconID;
-                return $"http://openweathermap.org/img/wn/{iconID}@2x.png"; 
+                return $"http://openweathermap.org/img/wn/{iconID}@2x.png";
             }
         }
 
